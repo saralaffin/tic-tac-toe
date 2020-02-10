@@ -42,6 +42,7 @@ let players = {
 }
 let currentPlayer = players.red
 playerHeading.innerText = `It is ${currentPlayer.color}'s turn`
+let counter = 0
 function colorChange(eve) {
     eve.target.style.backgroundColor = currentPlayer.color
     eve.target.removeEventListener("click", colorChange)
@@ -53,6 +54,10 @@ function colorChange(eve) {
     playerHeading.innerText = `It is ${currentPlayer.color}'s turn`
     currentPlayer.board[parseInt(eve.target.dataset.row)][parseInt(eve.target.dataset.column)] = 1
     checkWin(currentPlayer.board)
+    counter++
+    if (counter == 9) {
+        console.log("Board full")
+    }
 }
 
 function resetBoard(eve) {
@@ -61,6 +66,7 @@ function resetBoard(eve) {
     boxContainer.setAttribute("class","boxes")
     populateBoard()
     main.insertBefore(boxContainer,resetButton)
+    counter = 0
     players.blue.board = [
         [0,0,0],
         [0,0,0],
@@ -80,7 +86,7 @@ let winComboFirstRow = [
 ]
 
 function checkWin(comboArray) {
-    if (JSON.stringify(comboArray)==JSON.stringify(winComboFirstRow)) {
+    if (JSON.stringify(comboArray[0])==JSON.stringify(winComboFirstRow[0])) {
         console.log("Player wins!")
     }
 }
