@@ -67,6 +67,7 @@ function colorChange(eve) {
 }
 
 function resetBoard(eve) {
+    playerHeading.innerText = `It is ${currentPlayer.color}'s turn`
     console.clear()
     boxContainer.parentNode.removeChild(boxContainer)
     boxContainer = document.createElement("div")
