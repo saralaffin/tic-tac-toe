@@ -46,14 +46,16 @@ let counter = 0
 function colorChange(eve) {
     eve.target.style.backgroundColor = currentPlayer.color
     eve.target.removeEventListener("click", colorChange)
+    currentPlayer.board[parseInt(eve.target.dataset.row)][parseInt(eve.target.dataset.column)] = 1
+    if (checkWin(currentPlayer.board)) {
+        console.log(`${currentPlayer.color} is victorious!`)
+    }
     if (currentPlayer == players.red) {
         currentPlayer = players.blue
     } else {
         currentPlayer = players.red
     }
     playerHeading.innerText = `It is ${currentPlayer.color}'s turn`
-    currentPlayer.board[parseInt(eve.target.dataset.row)][parseInt(eve.target.dataset.column)] = 1
-    checkWin(currentPlayer.board)
     counter++
     if (counter == 9) {
         console.log("Board full")
@@ -79,14 +81,21 @@ function resetBoard(eve) {
     ]
 }
 
-let winComboFirstRow = [
+let winCombo = [
     [1, 1, 1],
-    [0, 0, 0],
-    [0, 0, 0]
+    [1, 1, 1],
+    [1, 1, 1]
 ]
 
 function checkWin(comboArray) {
-    if (JSON.stringify(comboArray[0])==JSON.stringify(winComboFirstRow[0])) {
+    if (JSON.stringify(comboArray[0])==JSON.stringify(winCombo[0])) {
         console.log("Player wins!")
+        return true
+    } if (JSON.stringify(comboArray[1])==JSON.stringify(winCombo[1])) {
+        console.log("Player wins!")
+        return true
+    } if (JSON.stringify(comboArray[2])==JSON.stringify(winCombo[2])) {
+        console.log("Player wins!")
+        return true
     }
 }
