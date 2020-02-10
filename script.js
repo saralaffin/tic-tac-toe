@@ -61,6 +61,16 @@ function resetBoard(eve) {
     boxContainer.setAttribute("class","boxes")
     populateBoard()
     main.insertBefore(boxContainer,resetButton)
+    players.blue.board = [
+        [0,0,0],
+        [0,0,0],
+        [0,0,0]
+    ]
+    players.red.board = [
+        [0,0,0],
+        [0,0,0],
+        [0,0,0]
+    ]
 }
 
 let winComboFirstRow = [
