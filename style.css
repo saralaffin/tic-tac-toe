@@ -1,12 +1,18 @@
 * {
     box-sizing: border-box;
 }
-
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 .boxes {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 5vw;
     width: 80vw;
+    margin: 5vw;
 }
 .box {
     background-color: rgb(59, 56, 56);
