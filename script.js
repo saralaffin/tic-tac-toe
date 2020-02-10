@@ -48,7 +48,11 @@ function colorChange(eve) {
     eve.target.removeEventListener("click", colorChange)
     currentPlayer.board[parseInt(eve.target.dataset.row)][parseInt(eve.target.dataset.column)] = 1
     if (checkWin(currentPlayer.board)) {
-        console.log(`${currentPlayer.color} is victorious!`)
+        console.log(`${currentPlayer.color} is victorious! Click reset button to try again`)
+        playerHeading.innerText = `${currentPlayer.color} is victorious! Click reset button to try again`
+        let boxes = document.querySelectorAll(".box")
+        boxes.forEach(box => box.removeEventListener("click",colorChange))
+        return
     }
     if (currentPlayer == players.red) {
         currentPlayer = players.blue
@@ -63,6 +67,7 @@ function colorChange(eve) {
 }
 
 function resetBoard(eve) {
+    console.clear()
     boxContainer.parentNode.removeChild(boxContainer)
     boxContainer = document.createElement("div")
     boxContainer.setAttribute("class","boxes")
@@ -83,13 +88,10 @@ function resetBoard(eve) {
 
 function checkWin(comboArray) {
     if (checkRows(comboArray)) {
-        console.log("Player wins!")
         return true
     } if (checkColumns(comboArray)) {
-        console.log("Player wins!")
         return true
     } if (checkDiag(comboArray)) {
-        console.log("Player wins!")
         return true
     }
     return false
