@@ -81,20 +81,8 @@ function resetBoard(eve) {
     ]
 }
 
-let winCombo = [
-    [1, 1, 1],
-    [1, 1, 1],
-    [1, 1, 1]
-]
-
 function checkWin(comboArray) {
-    if (JSON.stringify(comboArray[0])==JSON.stringify(winCombo[0])) {
-        console.log("Player wins!")
-        return true
-    } if (JSON.stringify(comboArray[1])==JSON.stringify(winCombo[1])) {
-        console.log("Player wins!")
-        return true
-    } if (JSON.stringify(comboArray[2])==JSON.stringify(winCombo[2])) {
+    if (checkRows(comboArray)) {
         console.log("Player wins!")
         return true
     } if (checkColumns(comboArray)) {
@@ -103,6 +91,21 @@ function checkWin(comboArray) {
     } if (checkDiag(comboArray)) {
         console.log("Player wins!")
         return true
+    }
+    return false
+}
+
+function checkRows(comboArray) {
+    for (let i = 0; i < 3; i++) {
+        let rowCount = 0
+        for (let j = 0; j < 3; j++) {
+            if (comboArray[i][j] == 1) {
+                rowCount++
+            }
+        }
+        if (rowCount == 3) {
+            return true;
+        }
     }
     return false
 }
