@@ -13,6 +13,7 @@ let players = [{
 let currentPlayer = 0
 function colorChange(eve) {
     eve.target.style.backgroundColor = players[currentPlayer].color
+    eve.target.removeEventListener("click", colorChange)
     if (currentPlayer == 0) {
         currentPlayer = 1
     } else {
