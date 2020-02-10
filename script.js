@@ -1,5 +1,6 @@
 let main = document.querySelector("main")
 let boxContainer = document.querySelector(".boxes")
+let playerHeading = document.querySelector(".player")
 function populateBoard(){
     for (let i = 0; i < 9; i++) {
         let box = document.createElement("div")
@@ -23,6 +24,7 @@ let players = [{
     color: "blue"
 }]
 let currentPlayer = 0
+playerHeading.innerText = `It is ${players[currentPlayer].color}'s turn`
 function colorChange(eve) {
     eve.target.style.backgroundColor = players[currentPlayer].color
     eve.target.removeEventListener("click", colorChange)
@@ -31,6 +33,7 @@ function colorChange(eve) {
     } else {
         currentPlayer = 0
     }
+    playerHeading.innerText = `It is ${players[currentPlayer].color}'s turn`
 }
 
 function resetBoard(eve) {
