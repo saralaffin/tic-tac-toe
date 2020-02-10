@@ -132,5 +132,14 @@ function checkDiag(comboArray) {
     if (diagCount == 3) {
         return true
     }
+    diagCount = 0
+    for (let i = 0, j = 2; i < 3; i++, j--) {
+        if (comboArray[i][j] == 1) {
+            diagCount++
+        }
+    }
+    if (diagCount == 3) {
+        return true
+    }
     return false
 }
