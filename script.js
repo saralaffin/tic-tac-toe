@@ -5,7 +5,17 @@ for (let i = 0; i < 9; i++) {
     box.addEventListener("click", colorChange)
     boxContainer.appendChild(box)
 }
-
+let players = [{
+    color: "red"
+}, {
+    color: "blue"
+}]
+let currentPlayer = 0
 function colorChange(eve) {
-    eve.target.style.backgroundColor = "red"
+    eve.target.style.backgroundColor = players[currentPlayer].color
+    if (currentPlayer == 0) {
+        currentPlayer = 1
+    } else {
+        currentPlayer = 0
+    }
 }
