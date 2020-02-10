@@ -2,3 +2,14 @@
     box-sizing: border-box;
 }
 
+.boxes {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 5vw;
+    width: 80vw;
+}
+.box {
+    background-color: rgb(59, 56, 56);
+    color: white;
+    height: 20vh;
+}
