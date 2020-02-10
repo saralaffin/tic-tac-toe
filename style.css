@@ -15,7 +15,6 @@ main {
     grid-template-columns: 10vw 10vw 10vw;
     grid-gap: 1vw;
     margin-bottom: 2vw;
-    border: rgb(59, 56, 56) solid 1vw;
 }
 .box {
     background-color: rgb(59, 56, 56);
