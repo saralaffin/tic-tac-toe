@@ -1,17 +1,21 @@
 let main = document.querySelector("main")
 let boxContainer = document.querySelector(".boxes")
-for (let i = 0; i < 9; i++) {
-    let box = document.createElement("div")
-    box.setAttribute("class","box")
-    box.addEventListener("click", colorChange)
-    boxContainer.appendChild(box)
+function populateBoard(){
+    for (let i = 0; i < 9; i++) {
+        let box = document.createElement("div")
+        box.setAttribute("class","box")
+        box.addEventListener("click", colorChange)
+        boxContainer.appendChild(box)
+    }
 }
+populateBoard()
 
 let reset = document.createElement("button")
 reset.setAttribute("class","reset")
 reset.innerText = "Reset"
 reset.addEventListener("click", resetBoard)
 main.appendChild(reset)
+let resetButton = document.querySelector(".reset")
 
 let players = [{
     color: "red"
@@ -30,6 +34,9 @@ function colorChange(eve) {
 }
 
 function resetBoard(eve) {
-    console.log("reset please!")
     boxContainer.parentNode.removeChild(boxContainer)
+    boxContainer = document.createElement("div")
+    boxContainer.setAttribute("class","boxes")
+    populateBoard()
+    main.insertBefore(boxContainer,resetButton)
 }
