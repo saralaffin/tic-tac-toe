@@ -1,5 +1,7 @@
 # tic-tac-toe
-Mini-project in week 4 of General Assembly SEI35
+Mini-project in week 4 of General Assembly SEI35. Completed in 3.5 hours.
+
+To see the site and play the game, click [here](https://saralaffin.github.io/tic-tac-toe/)
 
 ## Requirements
 

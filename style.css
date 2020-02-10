@@ -7,15 +7,22 @@ main {
     justify-content: center;
     align-items: center;
 }
+.player {
+    text-align: center;
+}
 .boxes {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 5vw;
-    width: 80vw;
-    margin: 5vw;
+    grid-template-columns: 10vw 10vw 10vw;
+    grid-gap: 1vw;
+    margin-bottom: 2vw;
+    border: rgb(59, 56, 56) solid 1vw;
 }
 .box {
     background-color: rgb(59, 56, 56);
     color: white;
-    height: 20vh;
+    width: 10vw;
+    height: 10vw;
+}
+.reset {
+    min-width: 5vw;
 }

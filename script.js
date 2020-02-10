@@ -1,6 +1,7 @@
 let main = document.querySelector("main")
 let boxContainer = document.querySelector(".boxes")
 let playerHeading = document.querySelector(".player")
+let round = 0
 function populateBoard(){
     for (let i = 0; i < 3; i++) {
         for (let j = 0; j < 3; j++) {
@@ -48,10 +49,10 @@ function colorChange(eve) {
     eve.target.removeEventListener("click", colorChange)
     currentPlayer.board[parseInt(eve.target.dataset.row)][parseInt(eve.target.dataset.column)] = 1
     if (checkWin(currentPlayer.board)) {
-        console.log(`${currentPlayer.color} is victorious! Click reset button to try again`)
         playerHeading.innerText = `${currentPlayer.color} is victorious! Click reset button to try again`
         let boxes = document.querySelectorAll(".box")
         boxes.forEach(box => box.removeEventListener("click",colorChange))
+        round++
         return
     }
     if (currentPlayer == players.red) {
@@ -62,13 +63,14 @@ function colorChange(eve) {
     playerHeading.innerText = `It is ${currentPlayer.color}'s turn`
     counter++
     if (counter == 9) {
-        console.log("Board full")
+        playerHeading.innerText = "It is a tie!  Click reset button to try again"
+        round++
     }
 }
 
 function resetBoard(eve) {
     playerHeading.innerText = `It is ${currentPlayer.color}'s turn`
-    console.clear()
+    console.log(`Round: ${round}. How many rounds will you play?`)
     boxContainer.parentNode.removeChild(boxContainer)
     boxContainer = document.createElement("div")
     boxContainer.setAttribute("class","boxes")
