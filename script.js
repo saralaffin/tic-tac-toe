@@ -97,5 +97,27 @@ function checkWin(comboArray) {
     } if (JSON.stringify(comboArray[2])==JSON.stringify(winCombo[2])) {
         console.log("Player wins!")
         return true
+    } if (checkColumns(comboArray)) {
+        console.log("Player wins!")
+        return true
     }
+    return false
+}
+
+function checkColumns(comboArray) {
+    console.log("I'm checking the columns!")
+    for (let i = 0; i < 3; i++) {
+        let columnCount = 0
+        for (let j = 0; j < 3; j++) {
+            console.log(comboArray)
+            if (comboArray[j][i] == 1) {
+                columnCount++
+            }
+            console.log("i=", i, " j=",j," array[]==1? :", comboArray[j][i]==1, " columnCount=",columnCount)
+        }
+        if (columnCount == 3) {
+            return true;
+        }
+    }
+    return false
 }
