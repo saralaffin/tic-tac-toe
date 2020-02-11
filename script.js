@@ -1,7 +1,14 @@
+try {
+    if (localStorage.getItem("round") > 0) {
+        console.log(`You have already played ${localStorage.getItem("round")} rounds`)
+    }
+} catch {
+    console.log("Welcome!")
+}
 let main = document.querySelector("main")
 let boxContainer = document.querySelector(".boxes")
 let playerHeading = document.querySelector(".player")
-let round = 0
+let round = localStorage.getItem("round") || 0
 function populateBoard(){
     for (let i = 0; i < 3; i++) {
         for (let j = 0; j < 3; j++) {
@@ -71,6 +78,7 @@ function colorChange(eve) {
 function resetBoard(eve) {
     playerHeading.innerText = `It is ${currentPlayer.color}'s turn`
     console.log(`Round: ${round}. How many rounds will you play?`)
+    localStorage.setItem("round", round.toString())
     boxContainer.parentNode.removeChild(boxContainer)
     boxContainer = document.createElement("div")
     boxContainer.setAttribute("class","boxes")
